@@ -10,7 +10,7 @@ function SidebarComponent () {
         <div className="sidebar">
             <Menu mode="vertical" theme="light">
             <Menu.Item icon={<UnorderedListOutlined />} key="1">
-              <Link to="/main">List</Link>
+              <Link to="">List</Link>
             </Menu.Item>
           </Menu>
         </div>

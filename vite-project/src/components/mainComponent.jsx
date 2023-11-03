@@ -1,6 +1,6 @@
 import React from "react";
 import { getTask,deleteTask } from "../api/TaskApi";
-
+import FormModal from './FormModal';
 import { Card, Col, Row,Button } from 'antd';
 import { useState } from "react";
 import { useEffect } from "react";
@@ -10,6 +10,9 @@ import { EditOutlined,DeleteOutlined } from '@ant-design/icons';
 function MainComponent() {
 
   const [task, setTask] = useState([]);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedTask, setSelectedTask] = useState(null);
+
 
   const fetchData = async () => {
     try {
@@ -21,6 +24,16 @@ function MainComponent() {
         throw error
     }
   };
+  const openModal = (task) => {
+    setSelectedTask(task);
+    setIsModalVisible(true);
+  };
+  const closeModal = () => {
+    setIsModalVisible(false);
+    setSelectedTask(null);
+  };
+  
+  
 
 
   const handleDeleteTask = async (taskId) => {
@@ -48,10 +61,16 @@ function MainComponent() {
                                     type="text"
                                     icon={<EditOutlined />}
                                     style={{color:'green',marginLeft:'70px'}}
-                                    
+                                    onClick={() => openModal(true)}
                                 >
                                     Güncelle
                                 </Button>
+                                <FormModal
+                                  isOpen={isModalVisible}
+                                  onClose={closeModal}
+                                  initialValues={selectedTask}
+                                />
+
                                 <Button
                                     danger
                                     type="text"

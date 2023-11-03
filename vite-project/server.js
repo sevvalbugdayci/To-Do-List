@@ -55,6 +55,7 @@ app.post('/tasks', (req, res) => {
 
 app.put('/tasks/:taskId', (req, res) => {
   const taskId = req.params.taskId;
+  console.log("Data Type of tasks:", typeof tasks);
   const updatedTask = req.body;
   const taskIndex = tasks.findIndex(task => task._id === taskId);
 

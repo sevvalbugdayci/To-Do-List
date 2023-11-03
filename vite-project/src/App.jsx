@@ -21,7 +21,7 @@ const App = () => {
             </Sider>
             <Content style={{ margin: '24px 16px', padding: 24, minHeight: 280 }}>
               <Routes>
-                <Route path='/main' element={<MainComponent/>}/>
+                <Route path='' element={<MainComponent/>}/>
               </Routes>
             </Content>
         </Layout>
